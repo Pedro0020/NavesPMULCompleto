@@ -22,12 +22,14 @@ public class Laser : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            // Destroy(gameObject); we will desactivate the laser instead of destroying it
+            gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        // Destroy(gameObject); we will desactivate the laser instead of destroying it
+        gameObject.SetActive(false);
     }
 }

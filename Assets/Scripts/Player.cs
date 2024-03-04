@@ -79,8 +79,14 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) // If the player presses the space key to shoot
         {
             shootPosition = transform.GetChild(1).transform.position; // Get the position of the shoot point
+            /* We use the laser pool to request a laser instead of instantiating a new one
             Laser laser = Instantiate(laserPrefab, shootPosition, transform.rotation);
             laser.Shoot(transform.up); // Shoot the laser
+            */
+            GameObject laser = LaserPool.Instance.RequestLaser(); // Request a laser from the pool
+            laser.transform.position = shootPosition; // Set the position of the laser
+            laser.transform.rotation = transform.rotation; // Set the rotation of the laser
+            laser.GetComponent<Laser>().Shoot(transform.up); // Shoot the laser
         }
     }
 
