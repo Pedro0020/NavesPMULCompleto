@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         }
         else if (movement > 0 && speed > maxSpeed) // If the player is moving forward and the speed is greater than the max speed
         {
-            speed = maxSpeed * Time.deltaTime;
+            speed = maxSpeed;
             fireAnimator.SetBool("going", true);
         }
         transform.Translate(Vector3.up * speed * Time.deltaTime); // Move the player forward or backwards depending on the speed

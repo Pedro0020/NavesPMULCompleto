@@ -6,6 +6,7 @@ TagManager:
   tags:
   - limit
   - Enemy
+  - Laser
   layers:
   - Default
   - TransparentFX
