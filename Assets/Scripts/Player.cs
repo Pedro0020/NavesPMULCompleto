@@ -88,6 +88,19 @@ public class Player : MonoBehaviour
             laser.transform.rotation = transform.rotation; // Set the rotation of the laser
             laser.GetComponent<Laser>().Shoot(transform.up); // Shoot the laser
         }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy") // If the player collides with an enemy
+        {
+            isAlive = false; // The player is not alive
+            transform.GetChild(0).gameObject.SetActive(false); // Deactivate the fire
+            GetComponent<CircleCollider2D>().enabled = false; // Deactivate the collider
+            animator.SetTrigger("die"); // Set the dead animation
+            Destroy(gameObject, 1f); // Destroy the player after 1 second
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1175,7 +1175,7 @@ MonoBehaviour:
   enemyYellow: {fileID: 3922006532423916145, guid: d5cc4e1dfa6e88d40afddea8331083cd, type: 3}
   enemyPink: {fileID: 1221020711448435591, guid: 5ae99489155a6af4daac28f386c1e729, type: 3}
   enemyGreen: {fileID: 7160622465211939401, guid: 279f95c453c7c544a887acf9a9f1664b, type: 3}
-  poolSize: 2
+  poolSize: 10
   enemies: []
 --- !u!4 &1170419234
 Transform:

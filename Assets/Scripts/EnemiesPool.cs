@@ -56,7 +56,8 @@ public class EnemiesPool : MonoBehaviour
 
     public GameObject RequestEnemy()
     {
-        for (int i = 0; i < enemies.Count; i++)
+        int randomEnemy = Random.Range(0, enemies.Count);
+        for (int i = randomEnemy; i < enemies.Count; i++)
         {
             if (!enemies[i].activeSelf)
             {
