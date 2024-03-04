@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - limit
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - background
   - Water
   - UI
   - 

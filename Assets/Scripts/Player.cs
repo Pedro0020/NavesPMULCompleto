@@ -5,11 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float speed = 0f;
-    [SerializeField] private float maxSpeed; // Max speed of the player is set in the inspector
+    [SerializeField] private float maxSpeed, aceleration, curbing, deceleration; // Max speed of the player is set in the inspector
     [SerializeField] private float rotationGrades; // Rotation speed of the player is set in the inspector
 
     private Animator animator, fireAnimator;
     private bool isAlive = true;
+
+    [SerializeField] private Laser laserPrefab; // Laser prefab is set in the inspector
+    [SerializeField] private float laserOffset; // Laser offset is set in the inspector
+    private Vector3 shootPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -48,17 +52,17 @@ public class Player : MonoBehaviour
 
         if (movement > 0 && speed < maxSpeed) // If the player is moving forward and the speed is less than the max speed
         { 
-            speed += 0.05f;
+            speed += aceleration * Time.deltaTime;
             fireAnimator.SetBool("going", true);
         } 
         else if(movement < 0 && speed > 0) // If the player is moving backwards and the speed is greater than 0
         {
-            speed -= 0.025f;
+            speed -= curbing * Time.deltaTime;
             fireAnimator.SetBool("going", false); 
         }
         else if (movement == 0 && speed > 0) // If the player is not moving and the speed is greater than 0
         {
-            speed -= 0.005f;
+            speed -= deceleration * Time.deltaTime;
             fireAnimator.SetBool("going", false);
         }
         else if (movement <= 0 && speed <= 0) // If the player is moving backwards or is not moving and the speed is less than or equal to 0
@@ -68,14 +72,15 @@ public class Player : MonoBehaviour
         }
         else if (movement > 0 && speed > maxSpeed) // If the player is moving forward and the speed is greater than the max speed
         {
-            speed = maxSpeed;
+            speed = maxSpeed * Time.deltaTime;
             fireAnimator.SetBool("going", true);
         }
         transform.Translate(Vector3.up * speed * Time.deltaTime); // Move the player forward or backwards depending on the speed
-        // For debug
-        if(Input.GetKey(KeyCode.Space)) // If the player presses the space key, the player will be teleported to the center of the screen
+        if(Input.GetKeyDown(KeyCode.Space)) // If the player presses the space key to shoot
         {
-            transform.position = new Vector3(0, 0, 0);
+            shootPosition = transform.GetChild(1).transform.position; // Get the position of the shoot point
+            Laser laser = Instantiate(laserPrefab, shootPosition, transform.rotation);
+            laser.Shoot(transform.up); // Shoot the laser
         }
     }
 
