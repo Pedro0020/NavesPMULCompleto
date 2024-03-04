@@ -24,11 +24,11 @@ public class LaserEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.SetActive(false); // Set the laser as inactive
+        Destroy(gameObject); // Destroy the laser when it collides with something
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        gameObject.SetActive(false); // Set the laser as inactive
+        Destroy(gameObject); // Destroy the laser when it collides with something
     }
 }

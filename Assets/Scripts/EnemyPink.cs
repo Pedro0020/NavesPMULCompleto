@@ -6,13 +6,13 @@ public class EnemyPink : MonoBehaviour
 {
     [SerializeField] private GameObject laserEnemyPrefab;
     [SerializeField] private float speed, delay;
-    [SerializeField] private Transform wayPointA, wayPointB, objective;
+    [SerializeField] private GameObject wayPointA, wayPointB, objective;
     private Animator animator;
     private Vector3 shootPosition;
 
 
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(Shoot());
         ResetPosition();
@@ -26,24 +26,24 @@ public class EnemyPink : MonoBehaviour
 
     private void Movement()
     {
-        transform.position = Vector2.MoveTowards(transform.position, objective.position, speed * Time.deltaTime);
-        if (Vector2.Distance(transform.position, objective.position) < 0.2f)
+        transform.position = Vector2.MoveTowards(transform.position, objective.transform.position, speed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, objective.transform.position) < 0.2f)
         {
             ResetPosition();
         }
     }
 
-    private void ResetPosition()
+    public void ResetPosition()
     {
         // Selects a random limit from A or B to start form depending on a Random number
         if (Random.Range(0, 2) == 0)
         {
-            transform.position = wayPointA.position;
+            transform.position = wayPointA.transform.position;
             objective = wayPointB;
         }
         else
         {
-            transform.position = wayPointB.position;
+            transform.position = wayPointB.transform.position;
             objective = wayPointA;
         }        
     }
@@ -61,6 +61,9 @@ public class EnemyPink : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        gameObject.SetActive(false);
+        if(collision.gameObject.tag == "Laser" || collision.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  limitLeft: {fileID: 0}
-  limitRight: {fileID: 0}
-  limitTop: {fileID: 0}
-  limitBottom: {fileID: 0}
+  limitLeft: {fileID: 5344327306584676346, guid: e781edba46c8f5247a8e75d877acf906, type: 3}
+  limitRight: {fileID: 5301582289576683735, guid: 6b8b0204a6663f240adbed7d8ae6348e, type: 3}
+  limitTop: {fileID: 9076397924715825700, guid: 57a5e174c7c4b3749a55619c072dd4c4, type: 3}
+  limitBottom: {fileID: 109476292118125853, guid: 573bc4edd0d2a8a4ead088382d7003c8, type: 3}
   objective: {fileID: 0}

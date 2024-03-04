@@ -187,8 +187,8 @@ MonoBehaviour:
   laserEnemyPrefab: {fileID: 6634271080320456065, guid: 004414563ea74d441872124c4ede4515, type: 3}
   speed: 1.5
   delay: 2
-  wayPointA: {fileID: 0}
-  wayPointB: {fileID: 0}
+  wayPointA: {fileID: 2622661182642665358, guid: db2003d426daf884290ecb19c73a1c90, type: 3}
+  wayPointB: {fileID: 1603052935237160281, guid: 9947cb3bb1cef204a9b85a792ae08742, type: 3}
   objective: {fileID: 0}
 --- !u!1 &4063651559069663770
 GameObject:
